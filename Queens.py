@@ -28,14 +28,14 @@ def solve_nqueens(board, row, cols, diag1, diag2):
         diag2.add(row + col)
 
         # Recur for next row
-        solve_nqueens(board, row + 1, cols, diag1, diag2)
-
+        if solve_nqueens(board, row + 1, cols, diag1, diag2):
+           return True
         # Backtrack
         board[row][col] = 0
         cols.remove(col)
         diag1.remove(row - col)
         diag2.remove(row + col)
-
+    return False
 # Driver code
 board = [[0 for _ in range(N)] for _ in range(N)]
 
